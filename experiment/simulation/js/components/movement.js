@@ -104,15 +104,29 @@ function moveToMid() {
 
 function moveRight() {
   moveable.style.transition = 'transform 5s ease';
-  moveable.style.transform = `translateX(-135px) translateY(100px)`;
-  moveable.addEventListener('transitionend', enableNextButton, { once: true });
+  moveable.style.transform = 'translateX(-135px) translateY(100px)';
+   document.getElementById('calibrationRight').innerText="Position Under Indenter – Places the sample exactly under the indenter tip for testing.";
+  // Wait for first transition to finish
+  moveable.addEventListener(
+    'transitionend',
+    function handler() {
+      // Remove this handler so it doesn't trigger again
+      moveable.removeEventListener('transitionend', handler);
 
+      // Apply second movement
+      moveable.style.transition = 'transform 5s ease';
+      moveable.style.transform = 'translateX(-135px) translateY(57px)';
+
+      // If you still want to enable the button after the second move
+      moveable.addEventListener('transitionend', enableNextButton, { once: true });
+    }
+  );
 }
 
 function moveToUp() {
   moveable.style.transition = 'transform 5s ease';
   moveable.style.transform = 'translateX(-135px) translateY(57px)';
-
+  
   // After moving up, start pen rotation
   moveable.addEventListener(
     'transitionend',
@@ -129,10 +143,12 @@ moveButton.addEventListener('click', moveObjectsX);
 calibrationButton.addEventListener('click', calibrationMovement);
 moveToMidButton.addEventListener('click', moveToMid);
 moveRightButton.addEventListener('click', moveRight);
-moveToUpButton.addEventListener('click', moveToUp);
-
-document.getElementById("moveToMidButton").addEventListener("click", () => {
-  document.getElementById("fixedDiv").style.display = "block";
+// moveToUpButton.addEventListener('click', moveToUp);
+moveToUpButton.addEventListener('click', movePen);
+document.getElementById("moveToMidButton").addEventListener("click", function () {
+  setTimeout(function () {
+    document.getElementById("fixedDiv").style.display = "block";
+  }, 4000); // delay 3 seconds
 });
 
 // ====================
@@ -140,7 +156,7 @@ document.getElementById("moveToMidButton").addEventListener("click", () => {
 // ====================
 function movePen() {
   const pen = document.getElementById("penImg");
-
+document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
   // Disc reference (from your transform)
   const discX = 170.7; 
   const discY = 100.9; 
