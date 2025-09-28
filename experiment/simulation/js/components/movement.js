@@ -252,26 +252,26 @@ document.getElementById('reloadButton').addEventListener('click', function() {
 
       const slideData = [
     {
-      img: "../simulation/js/components/3D profilo image of micro scratch.jpeg",
-      desc: "This is the description for Image 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      img: "2d.jpg",
+      desc: "This is the 2D view of the Scratch Test Output."
     },
     {
-      img: "https://via.placeholder.com/700x300/87CEFA/000000?text=Image+2",
-      desc: "This is the description for Image 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      img: "3d.png",
+      desc: "This is the 3D view of the Scratch Test Output."
     },
     {
-      img: "https://via.placeholder.com/700x300/90EE90/000000?text=Image+3",
-      desc: "This is the description for Image 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      img: "X.png",
+      desc: "X-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a horizontal line (X-axis)."
     },
     {
-      img: "https://via.placeholder.com/700x300/FFA07A/000000?text=Image+4",
-      desc: "This is the description for Image 4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      img: "Y.png",
+      desc: "Y-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a vertical line (Y-axis)."
     }
   ];
 
   function showSlider() {
     document.getElementById("myContainer").style.display = "block";
-    changeSlide(1); // Show first slide by default
+    changeSlide(); // Show first slide by default
   }
 
   function changeSlide(n) {
