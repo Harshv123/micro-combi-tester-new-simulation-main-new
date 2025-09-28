@@ -23,7 +23,7 @@ let currentStep = 0;
 calibrationButton.disabled = true;
 moveToMidButton.disabled = true;
 moveRightButton.disabled = true;
-moveToUpButton.disabled = true;
+// moveToUpButton.disabled = true;
 mircoscopeButton.disabled = true;
 resultBtn.disabled = true;
 //THIS NEED  TO UN COMMENT
@@ -194,65 +194,203 @@ document.getElementById("moveToMidButton").addEventListener("click", function ()
 // ====================
 // Pen animation function
 // ====================
+// function movePen() {
+//   const pen = document.getElementById("penImg");
+//   document.getElementById('scratchImage').style.display='block';
+//     moveToUpButton.classList.remove('highlighted-button');
+//     mircoscopeButton.disabled = false;
+//     mircoscopeButton.classList.add('highlighted-button');
+//   nextButtonName.textContent = 'Position under Microscope';
+// document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
+//   // Disc reference (from your transform)
+//   const discX = 170.7; 
+//   const discY = 100.9; 
+
+//   // Approximate disc width (adjust as per your SVG disc size × scale)
+//   const discWidth = 300;  
+
+//   // Pen scaling
+//   const scaleX = 0.1008;
+//   const scaleY = 0.1008;
+
+//   // Total animation duration (seconds)
+//   const totalDuration = 2;
+
+//   // Time for one left→right or right→left pass
+//   const passDuration = 3;  
+
+//   // Save initial position
+//   const initialTransform = "matrix(0.1008 0 0 0.1008 250.7 100.9)";
+
+//   let startTime = null;
+
+//   function animate(time) {
+//     if (!startTime) startTime = time;
+//     const elapsed = (time - startTime) / 1000;
+
+//     if (elapsed >= totalDuration) {
+//       // Reset after totalDuration
+//       pen.setAttribute("transform", initialTransform);
+//       return;
+//     }
+
+//     // Find how many passes completed
+//     const passProgress = (elapsed % passDuration) / passDuration; // 0 → 1
+//     const passCount = Math.floor(elapsed / passDuration);
+
+//     let x;
+//     if (passCount % 2 === 0) {
+//       // Left → Right
+//       x = discX + passProgress * discWidth;
+//     } else {
+//       // Right → Left
+//       x = discX + (1 - passProgress) * discWidth;
+//     }
+
+//     const y = discY; // keep vertical fixed
+
+//     // Apply transform
+//     pen.setAttribute("transform", `matrix(${scaleX} 0 0 ${scaleY} ${x} ${y})`);
+
+//     requestAnimationFrame(animate);
+//   }
+
+//   requestAnimationFrame(animate);
+// }
+
+
+// function movePen() {
+//   const pen = document.getElementById("penImg");
+//   const nextButtonName = document.getElementById("nextButtonName");
+//   const calibrationRight = document.getElementById("calibrationRight");
+//   const scratchLine = document.getElementById("scratchLine");
+
+//   // Update button and description
+//   nextButtonName.textContent = "Position under Microscope";
+//   calibrationRight.innerText =
+//     "Scratch – Starts the scratch process where the indenter moves across the sample surface.";
+
+//   // Disc reference (from your transform)
+//   const discX = 170.7;
+//   const discY = 100.9;
+
+//   // Approximate disc width (adjust as per your SVG disc size × scale)
+//   const discWidth = 300;
+
+//   // Pen scaling
+//   const scaleX = 0.1008;
+//   const scaleY = 0.1008;
+
+//   // Animation duration (seconds)
+//   const duration = 3;
+
+//   // === Define missing variables ===
+//   const startX = 300.1961;        // where scratch starts
+//   const lineY = 170.2041;         // vertical position of scratch line
+//   const scratchLength = 200; // how long scratch should go
+//   const scaledNibOffset = 650; // offset to align nib with line
+
+//   // Position the pen so nib is on start point of the line
+//   const penStartY = lineY - scaledNibOffset;
+//   pen.setAttribute(
+//     "transform",
+//     `matrix(${scaleX} 0 0 ${scaleY} ${startX} ${penStartY})`
+//   );
+
+//   // Reset the line
+//   scratchLine.setAttribute("x1", startX);
+//   scratchLine.setAttribute("y1", lineY);
+//   scratchLine.setAttribute("x2", startX);
+//   scratchLine.setAttribute("y2", lineY);
+
+//   let startTime = null;
+
+//   function animate(time) {
+//     if (!startTime) startTime = time;
+//     const elapsed = (time - startTime) / 1000;
+//     const progress = Math.min(elapsed / duration, 1);
+
+//     // x where nib should be now
+//     const x = startX + scratchLength * progress;
+//     // y where the image’s top-left should be so nib sits on line
+//     const y = lineY - scaledNibOffset;
+
+//     // Move pen so nib touches the line
+//     pen.setAttribute(
+//       "transform",
+//       `matrix(${scaleX} 0 0 ${scaleY} ${x} ${y})`
+//     );
+
+//     // Extend line end point to nib position
+//     scratchLine.setAttribute("x2", x);
+//     scratchLine.setAttribute("y2", lineY);
+
+//     if (progress < 1) requestAnimationFrame(animate);
+//   }
+
+//   requestAnimationFrame(animate);
+// }
+
 function movePen() {
+  
   const pen = document.getElementById("penImg");
-  document.getElementById('scratchImage').style.display='block';
-    moveToUpButton.classList.remove('highlighted-button');
+  const scratchLine = document.getElementById("scratchLine");
+ moveToUpButton.classList.remove('highlighted-button');
     mircoscopeButton.disabled = false;
     mircoscopeButton.classList.add('highlighted-button');
   nextButtonName.textContent = 'Position under Microscope';
 document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
-  // Disc reference (from your transform)
-  const discX = 170.7; 
-  const discY = 100.9; 
+  // line start (x,y where the nib should sit)
+  const startX = 250.1961;
+  const lineY = 160.2041;
 
-  // Approximate disc width (adjust as per your SVG disc size × scale)
-  const discWidth = 300;  
+  // length to draw
+  const scratchLength = 200;
 
-  // Pen scaling
-  const scaleX = 0.1008;
-  const scaleY = 0.1008;
+  // pen scale
+  const scaleX = 0.1000;
+  const scaleY = 0.1000;
 
-  // Total animation duration (seconds)
-  const totalDuration = 2;
+  // exact distance from top of original image to nib tip in pixels:
+  // (open the image and measure from top edge down to the tip of the nib)
+  const nibOffset = 650; // adjust this number until the nib sits on the line
+  const scaledNibOffset = nibOffset * scaleY;
 
-  // Time for one left→right or right→left pass
-  const passDuration = 3;  
+  // animation duration
+  const duration = 3;
 
-  // Save initial position
-  const initialTransform = "matrix(0.1008 0 0 0.1008 250.7 100.9)";
+  // position the pen so nib is on the start point of the line
+  const penStartY = lineY - scaledNibOffset;
+  pen.setAttribute("transform",
+    `matrix(${scaleX} 0 0 ${scaleY} ${startX} ${penStartY})`);
+
+  // reset the line
+  scratchLine.setAttribute("x1", startX);
+  scratchLine.setAttribute("y1", lineY);
+  scratchLine.setAttribute("x2", startX);
+  scratchLine.setAttribute("y2", lineY);
 
   let startTime = null;
 
   function animate(time) {
     if (!startTime) startTime = time;
     const elapsed = (time - startTime) / 1000;
+    const progress = Math.min(elapsed / duration, 1);
 
-    if (elapsed >= totalDuration) {
-      // Reset after totalDuration
-      pen.setAttribute("transform", initialTransform);
-      return;
-    }
+    // x where nib should be now
+    const x = startX + scratchLength * progress;
+    // y where the image’s top-left should be so that nib sits on line
+    const y = lineY - scaledNibOffset;
 
-    // Find how many passes completed
-    const passProgress = (elapsed % passDuration) / passDuration; // 0 → 1
-    const passCount = Math.floor(elapsed / passDuration);
+    // move pen so nib touches the line
+    pen.setAttribute("transform",
+      `matrix(${scaleX} 0 0 ${scaleY} ${x} ${y})`);
 
-    let x;
-    if (passCount % 2 === 0) {
-      // Left → Right
-      x = discX + passProgress * discWidth;
-    } else {
-      // Right → Left
-      x = discX + (1 - passProgress) * discWidth;
-    }
+    // extend line end point to nib position
+    scratchLine.setAttribute("x2", x);
+    scratchLine.setAttribute("y2", lineY);
 
-    const y = discY; // keep vertical fixed
-
-    // Apply transform
-    pen.setAttribute("transform", `matrix(${scaleX} 0 0 ${scaleY} ${x} ${y})`);
-
-    requestAnimationFrame(animate);
+    if (progress < 1) requestAnimationFrame(animate);
   }
 
   requestAnimationFrame(animate);

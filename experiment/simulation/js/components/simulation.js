@@ -54,7 +54,7 @@ class Simulation {
 
                                                           <button  class="btn btn-primary" id="moveRightButton">Position Under Indenter</button>
                 
-                                                          <button  class="btn btn-primary" id="moveToUpButton">Scratch</button>
+                                                          <button  class="btn btn-primary" onClick="movePen()" id="moveToUpButton">Scratch</button>
   <button  class="btn btn-primary" id="moveToMicro">Position under Microscope</button>
                                                         <button class="btn btn-primary" id="result1" >Output Observed From Microscope</button>
                             <button id="reloadButton" class="btn btn-secondary">Reset</button>
@@ -94,10 +94,17 @@ class Simulation {
 			
     <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="metaldisc2-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
 		</image>
-     <image id="scratchImage" style="overflow:visible;enable-background:new ; display:none ;" width="150" height="15" xlink:href="metaldisc-2.png"  transform="matrix(0.9 0 0 0.9 280.6979 175.2041)">
+    <image id="penImg"
+         width="508" height="800"
+         xlink:href="pen view-1.png"
+         transform="matrix(0.1008 0 0 0.1008 300.1961 110.2041)" />
 		</image>
-    <image id="penImg" style="overflow:visible;enable-background:new    ;" width="508" height="800" xlink:href="pen view-1.png"  transform="matrix(0.1008 0 0 0.1008 400.1961 120.2041)">
-		</image>
+    <line id="scratchLine"
+        x1="400.1961" y1="120.2041"
+        x2="400.1961" y2="120.2041"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round" />
 	</g>
 </g>
 </svg>
