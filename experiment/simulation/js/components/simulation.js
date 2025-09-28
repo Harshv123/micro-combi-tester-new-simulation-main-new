@@ -92,7 +92,9 @@ class Simulation {
 	<g id="Layer_1_00000129187720854272899390000001151877931053651354_">
 		
 			
-    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="disk view-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
+    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="metaldisc2-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
+		</image>
+     <image id="scratchImage" style="overflow:visible;enable-background:new ; display:none ;" width="150" height="15" xlink:href="metaldisc-2.png"  transform="matrix(0.9 0 0 0.9 280.6979 175.2041)">
 		</image>
     <image id="penImg" style="overflow:visible;enable-background:new    ;" width="508" height="800" xlink:href="pen view-1.png"  transform="matrix(0.1008 0 0 0.1008 400.1961 120.2041)">
 		</image>

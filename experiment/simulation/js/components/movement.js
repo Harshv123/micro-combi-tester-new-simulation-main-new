@@ -181,6 +181,7 @@ document.getElementById("moveToMidButton").addEventListener("click", function ()
 // ====================
 function movePen() {
   const pen = document.getElementById("penImg");
+  document.getElementById('scratchImage').style.display='block'
   nextButtonName.textContent = 'Position under Microscope';
 document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
   // Disc reference (from your transform)
