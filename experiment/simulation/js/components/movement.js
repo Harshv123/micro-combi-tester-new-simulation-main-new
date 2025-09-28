@@ -353,7 +353,7 @@ document.getElementById('calibrationRight').innerText="Scratch – Starts the sc
 
   // exact distance from top of original image to nib tip in pixels:
   // (open the image and measure from top edge down to the tip of the nib)
-  const nibOffset = 650; // adjust this number until the nib sits on the line
+  const nibOffset = 600; // adjust this number until the nib sits on the line
   const scaledNibOffset = nibOffset * scaleY;
 
   // animation duration
