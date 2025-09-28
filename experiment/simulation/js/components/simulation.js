@@ -55,10 +55,9 @@ class Simulation {
                                                           <button  class="btn btn-primary" id="moveRightButton">Position Under Indenter</button>
                 
                                                           <button  class="btn btn-primary" id="moveToUpButton">Scratch</button>
-                            
-                            <button class="btn btn-secondary" id="resetSimulation" style="opacity:0;"></button>
+                                                        <button class="btn btn-primary" id="result1" >Output</button>
                             <button id="reloadButton" class="btn btn-secondary">Reset</button>
-                            <button class="btn" id="result1" >Output</button>
+
                         </div>
                     </div>
 
@@ -371,6 +370,21 @@ class Simulation {
 
 
 
+</div>
+</div>
+</div>
+
+<div id="myContainer">
+  <img id="sliderImage" src="../simulation/js/components/3D profilo image of micro scratch.jpeg" alt="Image Slide">
+  <div class="desc-box" id="sliderDescription"></div>
+
+  <div class="btn-container">
+    <button class="img-btn" onclick="changeSlide(1)">Image 1</button>
+    <button class="img-btn" onclick="changeSlide(2)">Image 2</button>
+    <button class="img-btn" onclick="changeSlide(3)">Image 3</button>
+    <button class="img-btn" onclick="changeSlide(4)">Image 4</button>
+  </div>
+</div>
 
 
 
@@ -416,7 +430,7 @@ class Simulation {
             slider.addEventListener('input', (e) => this.updateParameter(e.target));
         });
 
-        document.getElementById('resetSimulation').addEventListener('click', () => this.resetSimulation());
+        // document.getElementById('resetSimulation').addEventListener('click', () => this.resetSimulation());
 
         // Add event listeners for the Output button
         // document.getElementById('result').addEventListener('click', () => this.showResults());
@@ -461,33 +475,9 @@ class Simulation {
 new Simulation();
 
 
-document.getElementById('reloadButton').addEventListener('click', function() {
-    location.reload(); // Reloads the current page
-});
 
 
 
-
-
-
-
-
-
-
-
-
-
-const button = document.getElementById('result1');
-  const container = document.getElementById('outputContainer');
-
-  button.addEventListener('click', () => {
-    // Toggle visibility
-    if (container.style.display === 'none' || container.style.display === '') {
-      container.style.display = 'block';
-    } else {
-      container.style.display = 'none';
-    }
-  });
 
 
 

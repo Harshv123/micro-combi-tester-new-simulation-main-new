@@ -218,6 +218,51 @@ document.getElementById('calibrationRight').innerText="Scratch – Starts the sc
 }
 
 
+document.getElementById('reloadButton').addEventListener('click', function() {
+    location.reload(); // Reloads the current page
+});
+
+
+    document.getElementById("result1").addEventListener("click", function () {
+      document.getElementById("myContainer").style.display = "block";
+    });
+
+
+      const slideData = [
+    {
+      img: "../simulation/js/components/3D profilo image of micro scratch.jpeg",
+      desc: "This is the description for Image 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      img: "https://via.placeholder.com/700x300/87CEFA/000000?text=Image+2",
+      desc: "This is the description for Image 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      img: "https://via.placeholder.com/700x300/90EE90/000000?text=Image+3",
+      desc: "This is the description for Image 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    {
+      img: "https://via.placeholder.com/700x300/FFA07A/000000?text=Image+4",
+      desc: "This is the description for Image 4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+  ];
+
+  function showSlider() {
+    document.getElementById("myContainer").style.display = "block";
+    changeSlide(1); // Show first slide by default
+  }
+
+  function changeSlide(n) {
+    const slide = slideData[n - 1];
+    document.getElementById("sliderImage").src = slide.img;
+    document.getElementById("sliderDescription").innerText = slide.desc;
+
+    // Remove 'active' class from all buttons
+    const buttons = document.querySelectorAll(".img-btn");
+    buttons.forEach(btn => btn.classList.remove("active"));
+    // Add 'active' class to the clicked button
+    buttons[n - 1].classList.add("active");
+  }
 
 // Initialize UI
 updateUI();
