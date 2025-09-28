@@ -6,11 +6,11 @@ const moveToMidButton = document.getElementById('moveToMidButton');
 const moveRightButton = document.getElementById('moveRightButton');
 const moveToUpButton = document.getElementById('moveToUpButton');
 const moveable = document.querySelector('.moveable');
-
+const moveable1 = document.querySelector('.moveable1')
 // Get references to the instruction section and the next button name
 const instructionSection = document.getElementById('instructionSection');
 const nextButtonName = document.getElementById('nextButtonName');
-
+moveable1.style.display="none";
 // Store the initial position of the object
 const initialPosition = { x: 295.66, y: 51.75 };
 
@@ -22,7 +22,7 @@ calibrationButton.disabled = true;
 moveToMidButton.disabled = true;
 moveRightButton.disabled = true;
 moveToUpButton.disabled = true;
-
+//THIS NEED  TO UN COMMENT
 // Function to highlight the active button and update instructions
 function updateUI() {
   moveButton.classList.remove('highlighted-button');
@@ -105,6 +105,10 @@ function moveToMid() {
 function moveRight() {
   moveable.style.transition = 'transform 5s ease';
   moveable.style.transform = 'translateX(-135px) translateY(100px)';
+  setTimeout(function () {
+    moveable1.style.display = "block";
+  }, 6000); // delay 3 seconds
+
    document.getElementById('calibrationRight').innerText="Position Under Indenter – Places the sample exactly under the indenter tip for testing.";
   // Wait for first transition to finish
   moveable.addEventListener(

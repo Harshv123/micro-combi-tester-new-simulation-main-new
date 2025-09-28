@@ -55,13 +55,17 @@ class Simulation {
                                                           <button  class="btn btn-primary" id="moveRightButton">Position Under Indenter</button>
                 
                                                           <button  class="btn btn-primary" id="moveToUpButton">Scratch</button>
-                            <button class="btn btn-primary" id="result">Output observation under microscope</button>
+                            
                             <button class="btn btn-secondary" id="resetSimulation" style="opacity:0;"></button>
                             <button id="reloadButton" class="btn btn-secondary">Reset</button>
+                            <button class="btn" id="result1" >Output</button>
                         </div>
                     </div>
 
+             
+
                     
+
 
 
 
@@ -88,7 +92,7 @@ class Simulation {
 	<g id="Layer_1_00000129187720854272899390000001151877931053651354_">
 		
 			
-    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="disk view-1.png"  transform="matrix(0.9 0 0 0.9 170.6976 100.9139)">
+    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="disk view-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
 		</image>
     <image id="penImg" style="overflow:visible;enable-background:new    ;" width="508" height="800" xlink:href="pen view-1.png"  transform="matrix(0.1008 0 0 0.1008 400.1961 120.2041)">
 		</image>
@@ -109,8 +113,17 @@ class Simulation {
 
 
 
+
+
+
   
   </div>
+
+
+  <div id="outputContainer">
+  <img src="image.jpg" alt="Output Image">
+</div>
+
 
 
 
@@ -321,7 +334,9 @@ class Simulation {
             </g>
              -->
             <g>
+              <image class="moveable1" width="1024" height="25" transform="translate(-116.63 335.02) " xlink:href="box.png"/>
               <image class="moveable" width="1024" height="450" transform="translate(-190.63 89.02) " xlink:href="holder.png"/>
+              
             </g>
             
               
@@ -341,36 +356,55 @@ class Simulation {
 <span id="calibrationRight" style="display:none;">Calibration ➡️ – Moves the sample stage forward for proper alignment before the test.
 </span>
     </div>
-<div class="model">
 
-        <!-- Results Section -->
-        <div id="resultsSection" class="results-section">
-            <h3>Results</h3>
-            <div class="slider-container">
-                <button id="scrollLeft" class="arrow-button">&larr;</button>
-                <div class="image-container">
-                    <div class="slide">
-                        <img src="2D optical profilo  image of micro scratch.jpeg" alt="Result 1">
-                        <p class="image-title">2D optical profilo  image of micro scratch</p>
-                    </div>
-                    <div class="slide">
-                        <img src="3D profilo image of micro scratch.jpeg" alt="Result 2">
-                        <p class="image-title">3D profilo image of micro scratch</p>
-                    </div>
-                   <div class="slide">
-                        <img src="3D profilo image of micro scratch.jpeg" alt="Result 2">
-                        <p class="image-title">3D profilo image of micro scratch</p>
-                    </div>
-                    <div class="slide">
-                        <img src="Scratch parameters.jpeg" alt="Result 4" stye="width 100px, height=100px">
-                        <p class="image-title">Scratch parameters</p>
-                    </div>
-                </div>
-                <button id="scrollRight" class="arrow-button">&rarr;</button>
-            </div>
-        </div>
+
+  
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+        
+
+
+
+
+
+
+
+
+
         `;
     }
+
+    
     attachEventListeners() {
         const testButtons = document.querySelectorAll('[data-test]');
         testButtons.forEach(button => {
@@ -385,18 +419,11 @@ class Simulation {
         document.getElementById('resetSimulation').addEventListener('click', () => this.resetSimulation());
 
         // Add event listeners for the Output button
-        document.getElementById('result').addEventListener('click', () => this.showResults());
+        // document.getElementById('result').addEventListener('click', () => this.showResults());
 
         // Add event listeners for the slider buttons
         document.getElementById('scrollLeft').addEventListener('click', () => this.changeSlide(-1));
         document.getElementById('scrollRight').addEventListener('click', () => this.changeSlide(1));
-    }
-
-    showResults() {
-        const resultsSection = document.getElementById('resultsSection');
-        resultsSection.style.display = 'block'; // Show the results section
-        this.currentSlide = 0; // Reset to the first slide
-        this.showSlide(this.currentSlide); // Show the first slide
     }
 
     showSlide(index) {
@@ -437,3 +464,38 @@ new Simulation();
 document.getElementById('reloadButton').addEventListener('click', function() {
     location.reload(); // Reloads the current page
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+const button = document.getElementById('result1');
+  const container = document.getElementById('outputContainer');
+
+  button.addEventListener('click', () => {
+    // Toggle visibility
+    if (container.style.display === 'none' || container.style.display === '') {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+

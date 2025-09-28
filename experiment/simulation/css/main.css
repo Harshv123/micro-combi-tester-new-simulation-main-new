@@ -416,3 +416,47 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      #outputContainer {
+    display: none; /* hidden by default */
+    margin-top: 20px;
+  }
+  #outputContainer img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
