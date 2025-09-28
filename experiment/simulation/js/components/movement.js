@@ -14,7 +14,8 @@ moveable1.style.display="none";
 const microscopePosition = document.getElementById('moveToMicro');
 // Store the initial position of the object
 const initialPosition = { x: 295.66, y: 51.75 };
-
+const mircoscopeButton = document.getElementById('moveToMicro');
+const resultBtn = document.getElementById('result1');
 // Track the current step in the sequence
 let currentStep = 0;
 
@@ -23,6 +24,8 @@ calibrationButton.disabled = true;
 moveToMidButton.disabled = true;
 moveRightButton.disabled = true;
 moveToUpButton.disabled = true;
+mircoscopeButton.disabled = true;
+resultBtn.disabled = true;
 //THIS NEED  TO UN COMMENT
 // Function to highlight the active button and update instructions
 function updateUI() {
@@ -31,7 +34,6 @@ function updateUI() {
   moveToMidButton.classList.remove('highlighted-button');
   moveRightButton.classList.remove('highlighted-button');
   moveToUpButton.classList.remove('highlighted-button');
-
   switch (currentStep) {
     case 0:
       moveButton.classList.add('highlighted-button');
@@ -82,6 +84,12 @@ function enableNextButton() {
     case 4:
       moveToUpButton.disabled = false;
       break;
+    case 5:
+      mircoscopeButton.disabled =false;
+      break;
+      case 6:
+ resultBtn.disabled = false;
+ break;
     default:
       break;
   }
@@ -113,8 +121,15 @@ function moveToMid() {
 microscopePosition.addEventListener('click', moveToMicro);
 
 function moveToMicro() {
+  calibrationButton.disabled = true;
+moveToMidButton.disabled = true;
+moveRightButton.disabled = true;
+moveToUpButton.disabled = true;
   moveable.style.transition = 'transform 5s ease';
   moveable.style.transform = `translateX(-99px) translateY(100px)`;
+  resultBtn.disabled =  false;
+  resultBtn.classList.add('highlighted-button');
+  mircoscopeButton.classList.remove('highlighted-button');
   moveable1.style.display = "none";
     nextButtonName.textContent = 'Output Observed From Microscope';
   moveable.addEventListener('transitionend', enableNextButton, { once: true });
@@ -181,7 +196,10 @@ document.getElementById("moveToMidButton").addEventListener("click", function ()
 // ====================
 function movePen() {
   const pen = document.getElementById("penImg");
-  document.getElementById('scratchImage').style.display='block'
+  document.getElementById('scratchImage').style.display='block';
+    moveToUpButton.classList.remove('highlighted-button');
+    mircoscopeButton.disabled = false;
+    mircoscopeButton.classList.add('highlighted-button');
   nextButtonName.textContent = 'Position under Microscope';
 document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
   // Disc reference (from your transform)
