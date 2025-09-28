@@ -55,7 +55,8 @@ class Simulation {
                                                           <button  class="btn btn-primary" id="moveRightButton">Position Under Indenter</button>
                 
                                                           <button  class="btn btn-primary" id="moveToUpButton">Scratch</button>
-                                                        <button class="btn btn-primary" id="result1" >Output</button>
+  <button  class="btn btn-primary" id="moveToMicro">Position under Microscope</button>
+                                                        <button class="btn btn-primary" id="result1" >Output Observed From Microscope</button>
                             <button id="reloadButton" class="btn btn-secondary">Reset</button>
 
                         </div>

@@ -11,6 +11,7 @@ const moveable1 = document.querySelector('.moveable1')
 const instructionSection = document.getElementById('instructionSection');
 const nextButtonName = document.getElementById('nextButtonName');
 moveable1.style.display="none";
+const microscopePosition = document.getElementById('moveToMicro');
 // Store the initial position of the object
 const initialPosition = { x: 295.66, y: 51.75 };
 
@@ -52,6 +53,14 @@ function updateUI() {
       moveToUpButton.classList.add('highlighted-button');
       nextButtonName.textContent = 'Scratch';
       break;
+      case 5:
+        document.getElementById('moveToMicro').classList.add('highlighted-button');
+        nextButtonName.textContent = 'Postion under Microscope';
+        break;
+     case 6 :
+        document.getElementById('result1').classList.add('highlighted-button');
+        nextButtonName.textContent = 'Postion under Microscope';
+        break;
     default:
       break;
   }
@@ -101,6 +110,17 @@ function moveToMid() {
     document.getElementById('calibrationRight').innerText="Microscope – Activates the microscope view to focus and check the sample surface.";
 
 }
+microscopePosition.addEventListener('click', moveToMicro);
+
+function moveToMicro() {
+  moveable.style.transition = 'transform 5s ease';
+  moveable.style.transform = `translateX(-99px) translateY(100px)`;
+  moveable1.style.display = "none";
+    nextButtonName.textContent = 'Output Observed From Microscope';
+  moveable.addEventListener('transitionend', enableNextButton, { once: true });
+    document.getElementById('calibrationRight').innerText="Microscope – Activates the microscope view to focus and observe the scratch";
+
+}
 
 function moveRight() {
   moveable.style.transition = 'transform 5s ease';
@@ -140,6 +160,7 @@ function moveToUp() {
     },
     { once: true }
   );
+  document.getElementById('instruction-section').textContent = 'Postion under Microscope';
 }
 
 // Attach event listeners
@@ -160,6 +181,7 @@ document.getElementById("moveToMidButton").addEventListener("click", function ()
 // ====================
 function movePen() {
   const pen = document.getElementById("penImg");
+  nextButtonName.textContent = 'Position under Microscope';
 document.getElementById('calibrationRight').innerText="Scratch – Starts the scratch process where the indenter moves across the sample surface.";
   // Disc reference (from your transform)
   const discX = 170.7; 
@@ -173,7 +195,7 @@ document.getElementById('calibrationRight').innerText="Scratch – Starts the sc
   const scaleY = 0.1008;
 
   // Total animation duration (seconds)
-  const totalDuration = 9;
+  const totalDuration = 2;
 
   // Time for one left→right or right→left pass
   const passDuration = 3;  
