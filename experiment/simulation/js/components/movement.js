@@ -126,11 +126,12 @@ moveToMidButton.disabled = true;
 moveRightButton.disabled = true;
 moveToUpButton.disabled = true;
   moveable.style.transition = 'transform 5s ease';
-  moveable.style.transform = `translateX(-99px) translateY(100px)`;
+  moveable.style.transform = `translateX(-104px) translateY(57px)`;
   resultBtn.disabled =  false;
   resultBtn.classList.add('highlighted-button');
   mircoscopeButton.classList.remove('highlighted-button');
-  moveable1.style.display = "none";
+  moveable1.style.transition = 'transform 5s ease';
+  moveable1.style.transform = `translateX(-86px) translateY(335.02px)`;
     nextButtonName.textContent = 'Output Observed From Microscope';
   moveable.addEventListener('transitionend', enableNextButton, { once: true });
     document.getElementById('calibrationRight').innerText="Microscope – Activates the microscope view to focus and observe the scratch";
@@ -345,7 +346,7 @@ document.getElementById('calibrationRight').innerText="Scratch – Starts the sc
   const lineY = 160.2041;
 
   // length to draw
-  const scratchLength = 200;
+  const scratchLength = 150;
 
   // pen scale
   const scaleX = 0.1000;
@@ -443,5 +444,23 @@ document.getElementById('reloadButton').addEventListener('click', function() {
     buttons[n - 1].classList.add("active");
   }
 
+const svgContainer = document.getElementById("svgContainer");
+const elementName = document.getElementById("elementName");
+
+svgContainer.addEventListener("mouseover", (e) => {
+    if (e.target.dataset.name) {
+        elementName.innerText = e.target.dataset.name;
+        elementName.style.left = e.clientX + "-5px";
+        elementName.style.top = e.clientY + "-4px";
+        elementName.style.display = "block";
+    }
+});
+
+svgContainer.addEventListener("mouseout", () => {
+    elementName.style.display = "none";
+});
+
+  
 // Initialize UI
 updateUI();
+

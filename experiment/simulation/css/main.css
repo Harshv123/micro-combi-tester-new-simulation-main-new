@@ -496,6 +496,16 @@
 }
 
 
+#elementName {
+color: white;
+height: auto;
+margin-top: 0;
+text-align: center;
+width: 250px;
+font-size: larger;
+background-color: #333;
+}
+
 
 
 

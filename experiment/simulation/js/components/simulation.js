@@ -50,7 +50,7 @@ class Simulation {
                               Calibration ➡️
                             </button>
                                                         <button class="btn btn-primary" id="calibrationButton">Calibration ⬅️</button>
-                                                        <button  class="btn btn-primary" id="moveToMidButton"  id="moveToMidButton">Microscope</button> 
+                                                        <button  class="btn btn-primary" id="moveToMidButton">Microscope</button> 
 
                                                           <button  class="btn btn-primary" id="moveRightButton">Position Under Indenter</button>
                 
@@ -75,7 +75,7 @@ class Simulation {
 
 
                     
-                    <div class="simulation-preview">
+                    <div class="simulation-preview"id="svgContainer">
                     
                         <div class="simulation-canvas">
   <div id="fixedDiv">
@@ -92,14 +92,16 @@ class Simulation {
 	<g id="Layer_1_00000129187720854272899390000001151877931053651354_">
 		
 			
-    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" xlink:href="metaldisc2-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
+    <image style="overflow:visible;enable-background:new    ;" width="514" height="210" data-name="Material"xlink:href="metaldisc2-1.png"  transform="matrix(0.9 0 0 0.9 110.6979 100.9139)">
 		</image>
     <image id="penImg"
          width="508" height="800"
+         data-name="Indenter"
          xlink:href="pen view-1.png"
          transform="matrix(0.1008 0 0 0.1008 300.1961 110.2041)" />
 		</image>
     <line id="scratchLine"
+    data-name="scratch"
         x1="400.1961" y1="120.2041"
         x2="400.1961" y2="120.2041"
         stroke="black"
@@ -132,7 +134,6 @@ class Simulation {
   <div id="outputContainer">
   <img src="image.jpg" alt="Output Image">
 </div>
-
 
 
 
@@ -223,7 +224,7 @@ class Simulation {
                 </g>
                 <g id="Layer_2">
                   <image class="cls-3" width="82" height="512" transform="translate(237.03 150.93) scale(.48)" xlink:href="machine-2.png"/>
-                  <image class="cls-3" width="104" height="513" transform="translate(280.26 150.99) scale(.13)" xlink:href="machine-3.png"/>
+                  <image class="cls-3"  width="104" height="513" transform="translate(280.26 150.99) scale(.13)" xlink:href="machine-3.png"/>
                   <image class="cls-3" width="59" height="512" transform="translate(281.84 248.54) scale(.28)" xlink:href="machine-4.png"/>
                   <image class="cls-3" width="507" height="304" transform="translate(282.03 208.59) scale(.13)" xlink:href="machine-5.png"/>
                   <image class="cls-3" width="35" height="512" transform="translate(270.69 150.99) scale(.47)" xlink:href="machine-6.png"/>
@@ -344,7 +345,7 @@ class Simulation {
              -->
             <g>
               <image class="moveable1" width="1024" height="25" transform="translate(-116.63 335.02) " xlink:href="box.png"/>
-              <image class="moveable" width="1024" height="450" transform="translate(-190.63 89.02) " xlink:href="holder.png"/>
+              <image class="moveable" width="1024" height="450" transform="translate(-190.63 89.02) "data-name="Stage"  pointer-events="visiblePainted" xlink:href="holder.png"/>
               
             </g>
             
@@ -374,11 +375,12 @@ class Simulation {
 
 
 
+
 </div>
 
 
 
-
+<div id="elementName"></div>
 
 </div>
 </div>
